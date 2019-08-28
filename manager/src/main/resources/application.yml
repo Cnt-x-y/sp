@@ -1,0 +1,11 @@
+server:
+  port: 1114
+
+spring:
+  application:
+    name: manager
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registry-center:1111/eureka/

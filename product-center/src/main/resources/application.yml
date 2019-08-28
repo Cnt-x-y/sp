@@ -1,0 +1,12 @@
+#Eureka
+eureka:
+  instance:
+    hostname: product-center
+  client:
+    serviceUrl:
+      defaultZone: http://registry-center:1111/eureka/
+server:
+  port: 1113
+spring:
+  application:
+    name: product-center

@@ -1,0 +1,11 @@
+#Eureka
+eureka:
+  instance:
+    hostname: registry-center
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+server:
+  port: 1111
