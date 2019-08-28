@@ -19,6 +19,7 @@ public class HelloController {
     @RequestMapping("/hello")
     public String hello() {
         ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://PRODUCT-CENTER/hello", String.class);
+
         return responseEntity.getBody();
     }
 }
