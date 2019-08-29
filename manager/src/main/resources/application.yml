@@ -1,10 +1,9 @@
 server:
   port: 1114
-
 spring:
   application:
     name: manager
-
+#Eureka
 eureka:
   instance:
     prefer-ip-address: true
