@@ -1,12 +1,14 @@
 #Eureka
 eureka:
   instance:
-    hostname: product-center
+    preferIpAddress: true
+    hostname: ${spring.cloud.client.ip-address}
+    instanceId: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://registry-center:1111/eureka/
 server:
-  port: 1113
+  port: 0
 spring:
   application:
     name: product-center

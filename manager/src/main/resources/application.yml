@@ -6,6 +6,10 @@ spring:
     name: manager
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ip-address}
+    instanceId: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://registry-center:1111/eureka/
