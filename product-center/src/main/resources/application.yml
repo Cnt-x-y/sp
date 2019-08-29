@@ -7,8 +7,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://registry-center:1111/eureka/
-server:
-  port: 0
 spring:
   application:
     name: product-center
