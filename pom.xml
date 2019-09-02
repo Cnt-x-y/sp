@@ -19,6 +19,7 @@
         <module>common</module>
         <module>registry-center</module>
         <module>product-center</module>
+        <module>gateway-center</module>
         <module>manager</module>
     </modules>
 

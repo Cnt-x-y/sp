@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
+        <module name="gateway-center" />
         <module name="manager" />
         <module name="product-center" />
         <module name="registry-center" />
@@ -16,6 +17,7 @@
       <module name="common" target="1.8" />
       <module name="discovery" target="1.8" />
       <module name="es" target="1.8" />
+      <module name="gateway-center" target="1.8" />
       <module name="manager" target="1.8" />
       <module name="product-center" target="1.8" />
       <module name="registry-center" target="1.8" />
@@ -27,6 +29,7 @@
       <module name="common" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="es" options="-parameters" />
+      <module name="gateway-center" options="-parameters" />
       <module name="manager" options="-parameters" />
       <module name="product-center" options="-parameters" />
       <module name="registry-center" options="-parameters" />
