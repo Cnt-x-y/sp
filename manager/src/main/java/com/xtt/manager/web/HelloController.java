@@ -1,9 +1,11 @@
 package com.xtt.manager.web;
 
 import com.xtt.manager.service.HelloServiceFeignClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @Author xuett
@@ -12,12 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @Autowired
+    @Resource
     private HelloServiceFeignClient helloServiceFeignClient;
 
     @RequestMapping("/hello")
     public String hello() {
         return helloServiceFeignClient.hello();
+    }
+
+    @RequestMapping("/hello1")
+    public String hello1(@RequestParam String name){
+        return helloServiceFeignClient.hello1(name);
     }
 
 }
