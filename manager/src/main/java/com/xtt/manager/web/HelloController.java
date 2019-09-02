@@ -1,16 +1,10 @@
 package com.xtt.manager.web;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.alibaba.fastjson.JSON;
+import com.xtt.common.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author xuett
@@ -19,26 +13,66 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
     @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
-    private DiscoveryClient client;
+    private HelloService helloService;
 
     @RequestMapping("/hello")
     public String hello() {
-        System.out.println("-------------------分割线---------------------");
-        List<String> services = client.getServices();
-        services.stream().forEach(serviceId -> {
-            List<ServiceInstance> instances = client.getInstances(serviceId);
-            instances.stream().forEach(instance -> {
-                System.out.println(String.format("serviceId = %s host = %s port = %s uri = %s",
-                        instance.getServiceId(), instance.getHost(), instance.getPort(), instance.getUri()));
-            });
-        });
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://PRODUCT-CENTER/hello", String.class);
-        return responseEntity.getBody();
+        return helloService.hello();
+    }
+
+    @RequestMapping("/hello1")
+    public String hello1(@RequestParam String name) {
+        return helloService.hello1(name);
+    }
+
+    @RequestMapping("/hello2")
+    public String hello2(@RequestHeader String name, @RequestHeader Integer age) {
+        return JSON.toJSONString(helloService.hello2(name, age));
+    }
+
+    @RequestMapping("/hello3")
+    public String hello1(@RequestBody User user) {
+        return helloService.hello3(user);
+    }
+
+    @FeignClient("product-center")
+    public interface HelloService {
+
+        /**
+         * hello
+         *
+         * @return
+         */
+        @RequestMapping("/hello")
+        String hello();
+
+        /**
+         * hello1
+         *
+         * @param name
+         * @return
+         */
+        @RequestMapping("/hello1")
+        String hello1(@RequestParam String name);
+
+        /**
+         * hello2
+         *
+         * @param name
+         * @param age
+         * @return
+         */
+        @RequestMapping("/hello2")
+        User hello2(@RequestHeader String name, @RequestHeader Integer age);
+
+        /**
+         * hello3
+         *
+         * @param user
+         * @return
+         */
+        @RequestMapping("/hello3")
+        String hello3(@RequestBody User user);
     }
 }
