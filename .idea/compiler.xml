@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
+        <module name="config-center" />
         <module name="gateway-center" />
         <module name="manager" />
         <module name="product-center" />
@@ -15,6 +16,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.8" />
+      <module name="config-center" target="1.8" />
       <module name="discovery" target="1.8" />
       <module name="es" target="1.8" />
       <module name="gateway-center" target="1.8" />
@@ -27,6 +29,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
+      <module name="config-center" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="es" options="-parameters" />
       <module name="gateway-center" options="-parameters" />
