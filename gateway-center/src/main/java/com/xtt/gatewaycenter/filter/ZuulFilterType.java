@@ -6,9 +6,21 @@ package com.xtt.gatewaycenter.filter;
  */
 public enum ZuulFilterType {
     /**
-     * 前置过滤器
+     * 被路由之前调用
      */
-    PRE("pre");
+    PRE("pre"),
+    /**
+     * 在路由请求时被调用
+     */
+    ROUTING("routing"),
+    /**
+     * 在routing 和 error 之后被调用
+     */
+    POST("post"),
+    /**
+     * 发生错误时被调用
+     */
+    ERROR("error");
 
     String type;
 
