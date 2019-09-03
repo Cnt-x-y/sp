@@ -38,17 +38,12 @@ public class AccessFilter extends ZuulFilter {
         RequestContext context = RequestContext.getCurrentContext();
         HttpServletRequest request = context.getRequest();
 
-        logger.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
-
         Object accessToken = request.getParameter("accessToken");
         if (accessToken == null) {
             context.setSendZuulResponse(false);
             context.setResponseStatusCode(401);
-            logger.info("accessToken is empty");
-            return null;
-        } else {
-            logger.info("accessToken is ok");
             return null;
         }
+        return null;
     }
 }

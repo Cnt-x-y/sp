@@ -18,6 +18,10 @@ spring:
 #路由
 zuul:
   routes:
-    manager: /manager/**
-    serviceId: manager
-
+    #后台路由
+    manager:
+      path: /manager/**
+      serviceId: manager
+    product-center:
+      path: /product-center/**
+      serviceId: product-center
