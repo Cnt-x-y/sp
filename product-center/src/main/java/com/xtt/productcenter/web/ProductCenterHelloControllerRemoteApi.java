@@ -1,5 +1,7 @@
 package com.xtt.productcenter.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,9 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductCenterHelloControllerRemoteApi implements HelloServiceRemoteApi {
 
+    @Autowired
+    private Environment environment;
+
     @Override
     public String hello() {
-        return "hello,xttt";
+        return "hello," + environment.getProperty("xtt.name");
     }
 
     @Override

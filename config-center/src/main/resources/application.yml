@@ -1,0 +1,17 @@
+server:
+  port: 1119
+
+spring:
+  application:
+    name: config-center
+  profiles:
+    active: dev
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Cnt-x-y/config-center.git
+          username: 2260387897@qq.com
+          password:
+          search-paths: /**
