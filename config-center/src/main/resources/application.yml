@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: config-center
-  profiles:
-    active: dev
 
   cloud:
     config:
