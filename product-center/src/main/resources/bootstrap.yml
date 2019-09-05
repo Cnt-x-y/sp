@@ -1,7 +1,3 @@
 spring:
-  cloud:
-    config:
-      label: master
-      profile: dev
-      uri: http://localhost:1119
-      name: product-center
+  profiles:
+    active: dev

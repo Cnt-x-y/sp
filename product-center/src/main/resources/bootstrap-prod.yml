@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      label: master
+      profile: prod
+      uri: http://localhost:1119
+      name: product-center
