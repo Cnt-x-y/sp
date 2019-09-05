@@ -1,10 +1,9 @@
 package com.xtt.manager.web;
 
-import com.xtt.common.config.XttConfigBean;
+import com.xtt.manager.config.XttBeanConfig;
 import com.xtt.manager.service.HelloServiceFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,14 +19,14 @@ import javax.annotation.Resource;
 public class HelloController {
 
     @Autowired
-    private Environment environment;
+    private XttBeanConfig xttBeanConfig;
 
     @Resource
     private HelloServiceFeignClient helloServiceFeignClient;
 
     @RequestMapping("/hello")
     public String hello() {
-        return helloServiceFeignClient.hello() + ",name：" + environment.getProperty("xtt.name");
+        return helloServiceFeignClient.hello() + ",name：" + xttBeanConfig.getName();
     }
 
     @RequestMapping("/hello1")
