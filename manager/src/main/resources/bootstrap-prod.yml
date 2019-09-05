@@ -5,6 +5,3 @@ spring:
       profile: prod
       uri: http://localhost:1119
       name: manager
-      discovery:
-        enabled: true
-        serviceId: config-center
