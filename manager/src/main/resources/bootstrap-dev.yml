@@ -5,3 +5,6 @@ spring:
       profile: dev
       uri: http://localhost:1119
       name: manager
+      discovery:
+        enabled: true
+        serviceId: config-center
