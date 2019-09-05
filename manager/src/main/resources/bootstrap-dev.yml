@@ -5,3 +5,4 @@ spring:
       profile: dev
       uri: http://localhost:1119
       name: manager
+      fail-fast: true # 开启重试功能时，此处的值要确保为true
