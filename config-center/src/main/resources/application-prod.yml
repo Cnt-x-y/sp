@@ -1,3 +1,6 @@
+server:
+  port: 1119
+
 #Eureka
 eureka:
   instance:
@@ -12,6 +15,9 @@ spring:
   application:
     name: config-center
   cloud:
+    bus:
+      refresh:
+        enabled: true
     config:
       server:
         git:
@@ -19,5 +25,19 @@ spring:
           #username: 2260387897@qq.com
           #password:
           search-paths: /**
-server:
-  port: 1119
+          force-pull: true
+  rabbitmq:
+    host: 192.168.0.178
+    port: 5672
+    username: xtt
+    password: 123456
+    virtualHost: xiaopangche
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+      cors:
+        allowed-origins: "*"
+        llowed-methods: "*"

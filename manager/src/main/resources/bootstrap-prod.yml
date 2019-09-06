@@ -1,8 +1,53 @@
 spring:
+  application:
+    name: manager
+  rabbitmq: #rabbitmq配置 ,配置类 RabbitAutoConfiguration
+    host: 192.168.0.178
+    port: 5672
+    username: xtt
+    password: 123456
+    virtualHost: xiaopangche
+    connection-timeout: 10000 #10s
+    publisherConfirms: true #确认回调
+    publisherReturns: true #返回回调
+    cache:
+      channel:
+        size: 50 #缓存的通道数量
+    listener:
+      simple:
+        acknowledge-mode: manual #手动应答
+        retry:
+          enabled: true #支持重试 默认3次
   cloud:
+    bus:
+      refresh:
+        enabled: true
     config:
+      discovery:
+        enabled: true
+        serviceId: config-center
       label: master
       profile: prod
       uri: http://localhost:1119
       name: manager
-      fail-fast: true # 开启重试功能时，此处的值要确保为true
+      fail-fast: true
+
+#Eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ip-address}
+    instanceId: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://registry-center:1111/eureka/
+
+management:
+  endpoint:
+    bus-refresh:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
