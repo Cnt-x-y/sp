@@ -24,6 +24,7 @@
       <module name="product-center" target="1.8" />
       <module name="registry-center" target="1.8" />
       <module name="sp" target="1.8" />
+      <module name="zipkin-center" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -37,6 +38,7 @@
       <module name="product-center" options="-parameters" />
       <module name="registry-center" options="-parameters" />
       <module name="sp" options="-parameters" />
+      <module name="zipkin-center" options="-parameters" />
     </option>
   </component>
 </project>
